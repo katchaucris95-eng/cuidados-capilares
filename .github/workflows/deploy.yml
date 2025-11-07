@@ -1,0 +1,27 @@
+name: 🚀 Deploy & Quality Assurance
+
+on:
+push:
+branches:
+- main
+workflow_dispatch:
+
+permissions:
+contents: read
+pages: write
+id-token: write
+
+concurrency:
+group: ${{ github.workflow }}-${{ github.ref }}
+cancel-in-progress: true
+
+jobs:
+deploy:
+name: 🚀 Deploy to Github pages
+runs-on: ubuntu-latest
+iF: github.ref == 'refs/heads'
+outputs:
+page_url: ${{ steps.deploymen}}
+
+environment:
+name: github-pages
