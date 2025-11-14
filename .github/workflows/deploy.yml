@@ -1,45 +1,45 @@
 name: 🚀 Deploy & Quality Assurance
 
 on:
- push:
-  branches:
-   - main
-workflow_dispatch:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 permissions:
- contents: read
- pages: write
- id-token: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
- group: ${{ github.workflow }}-${{ github.ref }}
- cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
- deploy:
-  name: 🚀 Deploy to Github pages
-  runs-on: ubuntu-latest
-  iF: github.ref == 'refs/heads'
-  outputs:
-   page_url: ${{ steps.deployment.outputs.page_url }}
+  deploy:
+    name: 🚀 Deploy to Github pages
+    runs-on: ubuntu-latest
+    iF: github.ref == 'refs/heads'
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
 
-  environment:
-   name: github-pages
-   url: ${{ steps.deployment.outputs.page_url }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
-  steps:
-  - name: 📤 Checkout code
-    uses: actions/checkout-pages@v4
+    steps:
+      - name: 📤 Checkout code
+        uses: actions/checkout-pages@v4
 
-  - name: 📄 Setup Pages
-    uses: actions/configure-pages@v4
+      - name: 📄 Setup Pages
+        uses: actions/configure-pages@v4
 
-  - name: 📦 Upload artifact
-    uses: actions/upload 
-    with:
-      path: "."
+      - name: 📦 Upload artifact
+        uses: actions/upload 
+        with:
+          path: "."
 
-  - name: 🚀 Deploy to Github Pages
-    id: deployment
-    uses: actions/deploy-pages@v4
-    
+      - name: 🚀 Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      
