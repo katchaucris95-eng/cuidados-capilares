@@ -20,3 +20,32 @@
     justify-self: flex-end;
 
 }
+body{
+    background-color: khaki;
+}
+header{background:#000000;padding:15px;box-shadow:0 0 10px rgb(253, 255, 129);}
+
+nav ul{display:flex;gap:20px;list-style:none;}
+
+nav ul li a{
+color:rgb(253, 255, 129);
+text-decoration:none;
+font-weight:bold;
+padding:6px 10px;
+border-radius:5px;
+transition:.3s;
+}
+
+nav ul li a:hover{
+background:rgb(253, 255, 129);
+color:black;
+}
+.imagem{
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    border-radius: 10px;
+    border: 2px #b30000; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
